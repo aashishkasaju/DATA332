@@ -13,7 +13,7 @@ This project analyzes patient visit data, billing details, and reasons for visit
   - Convert dates to proper formats and extract **month/year** for trend analysis.
   - Merge datasets using **relational keys (PatientID & VisitID)**.
 - **Visualizations**:
-  - **Reasons for visits by month**
+**Reasons for visits by month** 
 ![Reason for Visit by Month]https://github.com/aashishkasaju/DATA332/blob/d43092787bc290c432caa0d8ecdca3cc35ec82af/patientbilling/month.png
   - **Walk-in vs. scheduled visit breakdown**
   - **Reasons for visits by city/state**
