@@ -1,34 +1,37 @@
 
 # Text Analysis: Consumer Complaints
 
-## Creator
+### Creator
 Aashish Kasaju Shrestha
 
-## Introduction
+### Introduction
 I will utilize the tidytext package in R Studio to analyze consumer complaints by applying the NRC and Bing lexicons to determine the sentiment polarity of the complaints.
 
-## Dictionary 
+### Dictionary 
 The analysis was conducted on the Consumer.complaint.narrative column, which contains consumer complaints in their original format after the data was tidied.
 
-## Data Cleaning
+### Data Cleaning
 A cleaned version of the original dataset (**df**) was created by filtering out missing values in the **Consumer.complaint.narrative** column and retaining only that column.
-# Clean R Environment
+
+### Clean R Environment
 rm(list=ls())
 
-# Set Working Directory
+### Set Working Directory
 setwd('~/Desktop/DATA332/r_projects/textanalysis')
 
-# Load the Dataset
+### Load the Dataset
 data <- read.csv("Consumer_Complaints.csv", stringsAsFactors = FALSE)
 
-# Data Cleaning: Filter out any rows where the 'Consumer.complaint.narrative' column is NA or empty
+### Data Cleaning: Filter out any rows where the 'Consumer.complaint.narrative' column is NA or empty
+
+```
 clean_data <- data %>% 
   filter(!is.na(Consumer.complaint.narrative) & Consumer.complaint.narrative != "") %>% 
   select(Consumer.complaint.narrative)
 
 ```
 
-## Text Pre-processing
+### Text Pre-processing
 Remove punctuation characters from the 'Consumer.complaint.narrative' column
 Remove digits from the text
 Remove extra spaces using str_squish() to normalize the text
@@ -41,22 +44,24 @@ clean_data$Consumer.complaint.narrative <- clean_data$Consumer.complaint.narrati
 
 ```
 
-## Remove Stopwords 
+### Remove Stopwords 
 To remove common stopwords (e.g., "a", "the", "and") from the text
+
 ```
 clean_data <- clean_data %>% 
   mutate(Consumer.complaint.narrative = removeWords(Consumer.complaint.narrative, stop_words$word))
 
 ```
 
-## Tokenization
+### Tokenization
 Convert the text into individual words
 
 ```
 tokens <- clean_data %>% 
   unnest_tokens(word, Consumer.complaint.narrative)
 ```
-## Remove some words: 
+
+### Remove some words: 
 Filter out any unwanted words, such as placeholders (e.g., "XXXX")
 ```
 df_words <- df_words %>% 
@@ -64,7 +69,7 @@ df_words <- df_words %>%
 
 ```
 
-## Eave the Cleaned Data: Write the cleaned tokens to a new CSV file 'cleaned_consumer_complaints.csv'
+### Save the Cleaned Data: Write the cleaned tokens to a new CSV file 'cleaned_consumer_complaints.csv'
 
 ```
 write.csv(tokens, "cleaned_consumer_complaints.csv", row.names = FALSE)
@@ -72,7 +77,7 @@ write.csv(tokens, "cleaned_consumer_complaints.csv", row.names = FALSE)
 
 ```
 
-## Data Summary
+### Data Summary
 | | Word |
 |-|:--: |
 |1| received |
@@ -110,7 +115,19 @@ write.csv(tokens, "cleaned_consumer_complaints.csv", row.names = FALSE)
 * Frequent mention of "collection," "accounts," "fees," and "charges" suggests issues with billing, debt collection, and financial mismanagement.
 * Words like "contact," "request," and "statement" imply that consumers frequently reach out for resolutions but may face communication barriers.
 
-## Conclusion
+### Conclusion
+
+* Consumer complaints exhibit overwhelmingly negative sentiment, indicating widespread dissatisfaction.
+* Financial disputes, debt collection, and billing issues are the most common reasons for complaints.
+* Trust and positive sentiment are relatively low, suggesting that companies need to improve customer confidence and satisfaction.
+* Consumers frequently mention communication-related terms (e.g., "call," "request," "statement"), implying challenges in resolving issues   with service providers.
+* The presence of "anticipation" sentiment suggests that consumers expect resolutions but may not always receive satisfactory responses.
+* Companies should focus on improving transparency, communication, and dispute resolution processes to enhance customer satisfaction.
+
+
+
+
+
 
 
 
