@@ -1,0 +1,13 @@
+name: combined
+title: combined
+username: aashishkasaju
+account: aashishkasaju
+server: shinyapps.io
+hostUrl: https://api.shinyapps.io/v1
+appId: 14616609
+bundleId: 10179026
+url: https://aashishkasaju.shinyapps.io/combined/
+version: 1
+asMultiple: FALSE
+asStatic: FALSE
+ignoredFiles: .RData|combined.R|counting_cars.R|data1.xlsx|data2.xlsx|data3.csv|data4.csv|data5.csv|data6.csv|new_combined.csv
