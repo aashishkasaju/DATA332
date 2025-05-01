@@ -47,9 +47,8 @@ install.packages(c(
    rsconnect::deployApp("app.R")
    ```
 
-3. Access your app at:
-
-   https://<your-account>.shinyapps.io/uber-trips-explorer/
+3. **Live app link:**  
+   https://aashishkasaju.shinyapps.io/uber/
 
 ## Code Snippets
 
